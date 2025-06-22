@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:music_app/core/resources/alignment_mangers.dart';
 import 'package:music_app/core/resources/color_mangers.dart';
+import 'package:music_app/core/resources/height_values_mangers.dart';
+import 'package:music_app/features/on_boarding/widgets/custom_sub_title_on_boarding_page.dart';
 import 'package:music_app/features/on_boarding/widgets/custom_title_on_boarding_page.dart';
 
 class OnBoardingScreen extends StatelessWidget {
@@ -14,10 +16,7 @@ class OnBoardingScreen extends StatelessWidget {
         height: double.infinity,
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            begin: Alignment(
-              AlignmentMangersx.x0_20,
-              AlignmentMangersy.y_0_90,
-            ),
+            begin: Alignment(AlignmentMangersx.x0_20, AlignmentMangersy.y_0_90),
             end: Alignment(AlignmentMangersx.x_0_20, AlignmentMangersy.y0_98),
             colors: [
               ColorMangers.kPrimaryColor,
@@ -28,8 +27,11 @@ class OnBoardingScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: 111),
+            SizedBox(height: HeightValuesMangers.h111),
             CustomTitleOnBoardingPage(),
+            SizedBox(height: HeightValuesMangers.h11),
+            CustomSubTitleOnBoardingPage(),
+            MaterialButton(onPressed: (){})
           ],
         ),
       ),
