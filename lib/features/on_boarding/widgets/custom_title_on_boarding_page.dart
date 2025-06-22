@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:music_app/core/resources/color_mangers.dart';
+import 'package:music_app/core/resources/font_manger.dart';
+import 'package:music_app/core/resources/string_values.dart';
 
 class CustomTitleOnBoardingPage extends StatelessWidget {
   const CustomTitleOnBoardingPage({super.key});
@@ -9,21 +12,21 @@ class CustomTitleOnBoardingPage extends StatelessWidget {
       children: [
         Text(
           textAlign: TextAlign.center,
-          'Find Your Favourite ',
+          StringValues.titleOnBoardingPage ,
           style: TextStyle(
             height: 1.3,
-            color: Colors.white,
-            fontSize: 50,
+            color: ColorMangers.kWhite,
+            fontSize: FontSizeManger.f50,
             fontWeight: FontWeight.w700,
           ),
         ),
         Text(
           textAlign: TextAlign.center,
-          'Music',
+          StringValues.titleOnBoardingPage2,
           style: TextStyle(
             height: 1.3,
-            color: Color(0xff80CFF2),
-            fontSize: 50,
+            color: ColorMangers.kLightBlue,
+            fontSize: FontSizeManger.f50,
             fontWeight: FontWeight.w700,
           ),
         ),
