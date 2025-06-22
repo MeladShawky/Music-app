@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:music_app/core/resources/alignment_mangers.dart';
-import 'package:music_app/core/resources/assets_manger.dart';
 import 'package:music_app/core/resources/color_mangers.dart';
-import 'package:music_app/core/resources/font_manger.dart';
-import 'package:music_app/core/resources/height_values_mangers.dart';
-import 'package:music_app/core/resources/width_values_mangers.dart';
+import 'package:music_app/features/on_boarding/widgets/custom_title_on_boarding_page.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({super.key});
@@ -17,7 +14,10 @@ class OnBoardingScreen extends StatelessWidget {
         height: double.infinity,
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            begin: Alignment(AlignmentMangersx.x0_20, AlignmentMangersy.y_0_90),
+            begin: Alignment(
+              AlignmentMangersx.x0_20,
+              AlignmentMangersy.y_0_90,
+            ),
             end: Alignment(AlignmentMangersx.x_0_20, AlignmentMangersy.y0_98),
             colors: [
               ColorMangers.kPrimaryColor,
@@ -25,14 +25,12 @@ class OnBoardingScreen extends StatelessWidget {
             ],
           ),
         ),
-        child: Center(
-          child: Text(
-            'Melo',
-            style: TextStyle(
-              fontFamily: FontManger.orbitronFontName,
-              fontSize: 50,
-            ),
-          ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(height: 111),
+            CustomTitleOnBoardingPage(),
+          ],
         ),
       ),
     );
