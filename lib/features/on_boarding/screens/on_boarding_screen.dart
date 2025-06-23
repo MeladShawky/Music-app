@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:music_app/core/resources/alignment_mangers.dart';
 import 'package:music_app/core/resources/color_mangers.dart';
 import 'package:music_app/core/resources/height_values_mangers.dart';
+import 'package:music_app/features/on_boarding/widgets/custom_button_on_boading_page.dart';
 import 'package:music_app/features/on_boarding/widgets/custom_sub_title_on_boarding_page.dart';
 import 'package:music_app/features/on_boarding/widgets/custom_title_on_boarding_page.dart';
 
@@ -31,7 +32,8 @@ class OnBoardingScreen extends StatelessWidget {
             CustomTitleOnBoardingPage(),
             SizedBox(height: HeightValuesMangers.h11),
             CustomSubTitleOnBoardingPage(),
-            MaterialButton(onPressed: (){})
+            SizedBox(height: 58),
+            CustomButtonOnBoardingPage(),
           ],
         ),
       ),
