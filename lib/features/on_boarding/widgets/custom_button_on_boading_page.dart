@@ -8,12 +8,15 @@ import 'package:music_app/core/resources/width_values_mangers.dart';
 
 class CustomButtonOnBoardingPage extends StatelessWidget {
   const CustomButtonOnBoardingPage({
-    super.key,
+    super.key, required this.onPressed, required this.text,
   });
 
+  final VoidCallback onPressed;
+  final String text;
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
+      onPressed: onPressed,
       child: Container(
         alignment: Alignment.center,
         width: WidthValuesMangers.w171,
@@ -31,11 +34,10 @@ class CustomButtonOnBoardingPage extends StatelessWidget {
           ),
         ),
         child: Text(
-          StringValues.get_started,
+          text,
           style: TextStyle(color: ColorMangers.kWhite, fontSize: 18),
         ),
       ),
-      onPressed: () {},
     );
   }
 }
