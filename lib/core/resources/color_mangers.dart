@@ -8,6 +8,7 @@ class ColorMangers{
   static const Color kLightBlue=Color(0xff80CFF2);
   static const Color kWhite=Colors.white;
   static const Color kLigh2tBlue=Color(0xff2F5D9A);
+  static const Color kLigh3tBlue=Color(0xff3097C5);
 
 
 }

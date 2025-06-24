@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:music_app/core/resources/alignment_mangers.dart';
-import 'package:music_app/core/resources/assets_manger.dart';
 import 'package:music_app/core/resources/color_mangers.dart';
 import 'package:music_app/core/resources/height_values_mangers.dart';
 import 'package:music_app/core/resources/string_values.dart';
 import 'package:music_app/features/on_boarding/widgets/custom_button_on_boading_page.dart';
+import 'package:music_app/features/on_boarding/widgets/custom_image_on_boarding_page.dart';
 import 'package:music_app/features/on_boarding/widgets/custom_sub_title_on_boarding_page.dart';
 import 'package:music_app/features/on_boarding/widgets/custom_title_on_boarding_page.dart';
 
@@ -36,7 +36,8 @@ class OnBoardingScreen extends StatelessWidget {
             CustomSubTitleOnBoardingPage(),
             SizedBox(height: 58),
             CustomButtonOnBoardingPage(onPressed: (){}, text: StringValues.get_started,),
-            Expanded(child: Image(image: AssetImage(AssetsManger.music),fit: BoxFit.cover,))
+            CustomImageOnBoardingPage(),
+
           ],
         ),
       ),

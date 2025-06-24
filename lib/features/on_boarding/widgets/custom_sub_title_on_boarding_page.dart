@@ -13,7 +13,7 @@ class CustomSubTitleOnBoardingPage extends StatelessWidget {
       child: Text(
         StringValues.subtitleOnBoardingPage,
         textAlign: TextAlign.center,
-        style: TextStyle(fontSize: 15, color: ColorMangers.kWhite),
+        style: TextStyle(fontSize: 15, color: ColorMangers.kWhite,fontWeight: FontWeight.w500),
       ),
     );
   }
