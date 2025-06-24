@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:music_app/controller/on_boarding_page_controller.dart';
 import 'package:music_app/core/resources/alignment_mangers.dart';
 import 'package:music_app/core/resources/color_mangers.dart';
 import 'package:music_app/core/resources/height_values_mangers.dart';
@@ -35,7 +36,9 @@ class OnBoardingScreen extends StatelessWidget {
             SizedBox(height: HeightValuesMangers.h11),
             CustomSubTitleOnBoardingPage(),
             SizedBox(height: 58),
-            CustomButtonOnBoardingPage(onPressed: (){}, text: StringValues.get_started,),
+            CustomButtonOnBoardingPage(onPressed: (){
+              OnBoardingPageController.navigateToHomeScreen(context: context);
+            }, text: StringValues.get_started,),
             CustomImageOnBoardingPage(),
 
           ],
