@@ -9,6 +9,7 @@ class ColorMangers{
   static const Color kLigh2tBlue=Color(0xff2F5D9A);
   static const Color kLigh3tBlue=Color(0xff3097C5);
   static const Color kNavigationBarColor=Color(0xff261F44);
+  static const Color kDarkBlue=Color(0xff261F5D);
 
 
 
