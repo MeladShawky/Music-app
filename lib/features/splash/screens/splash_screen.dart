@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:music_app/controller/splash_controller.dart';
-import 'package:music_app/core/resources/routes_managers.dart';
-import 'package:music_app/core/resources/time_manger.dart';
 import 'package:music_app/features/splash/widgets/custom_logo_splash_screen.dart';
 
 
@@ -15,6 +13,7 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
+    super.initState();
     SplashController.navigateToOnBoardingScreen(context: context);
   }
   @override

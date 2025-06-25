@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:music_app/core/resources/color_mangers.dart';
 import 'package:music_app/core/resources/height_values_mangers.dart';
 import 'package:music_app/core/resources/radius_values_manger.dart';
-import 'package:music_app/core/resources/string_values.dart';
+
 import 'package:music_app/core/resources/width_values_mangers.dart';
 
 class CustomButtonOnBoardingPage extends StatelessWidget {
