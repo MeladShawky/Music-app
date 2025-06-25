@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:music_app/features/home/screens/home_page.dart';
 
 
 class HomeController{
@@ -13,9 +14,7 @@ class HomeController{
     Scaffold(
       body: Center(child: Text('align_horizontal_left'),),
     ),
-    Scaffold(
-      body: Center(child: Text('home'),),
-    ),
+    HomePage(),
     Scaffold(
       body: Center(child: Text('heart_broken_outlined'),),
     ),
