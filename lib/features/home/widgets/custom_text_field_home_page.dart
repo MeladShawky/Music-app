@@ -7,18 +7,21 @@ class CustomTextFieldHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      decoration: InputDecoration(
-        hintText: StringValues.Search_Song,
-        hintStyle: TextStyle(color: ColorMangers.kWhite),
-        prefixIcon: Icon(Icons.search,color: ColorMangers.kWhite,),
-        filled: true,
-        fillColor: Color(0xffB1AFE9),
-        border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(50)
-        ),
-        enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(50)
+    return Padding(
+      padding: const EdgeInsets.only(top: 55, right: 31, left: 31),
+      child: TextField(
+        decoration: InputDecoration(
+          hintText: StringValues.Search_Song,
+          hintStyle: TextStyle(color: ColorMangers.kWhite),
+          prefixIcon: Icon(Icons.search,color: ColorMangers.kWhite,),
+          filled: true,
+          fillColor: ColorMangers.kLightWhite,
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(50)
+          ),
+          enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(50)
+          ),
         ),
       ),
     );
