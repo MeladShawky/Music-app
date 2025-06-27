@@ -1,8 +1,13 @@
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:music_app/core/resources/alignment_mangers.dart';
+import 'package:music_app/core/resources/assets_manger.dart';
 
 import 'package:music_app/core/resources/color_mangers.dart';
+import 'package:music_app/core/resources/height_values_mangers.dart';
 import 'package:music_app/core/resources/string_values.dart';
+import 'package:music_app/features/home/widgets/custom_row_recommeded_music.dart';
 
 import 'package:music_app/features/home/widgets/custom_songs_details.dart';
 import 'package:music_app/features/home/widgets/custom_text_field_home_page.dart';
@@ -33,6 +38,9 @@ class HomePage extends StatelessWidget {
             itemCount: 3,
           ),
           CustomTitleHomePage(title: StringValues.recommanded_music),
+          SizedBox(height: HeightValuesMangers.h22,),
+          CustomRowRecommededMusic(),
+
         ],
       ),
     );
