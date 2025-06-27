@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:music_app/core/resources/color_mangers.dart';
+import 'package:music_app/core/resources/string_values.dart';
 
 class CustomTextFieldHomePage extends StatelessWidget {
   const CustomTextFieldHomePage({Key? key}) : super(key: key);
@@ -8,7 +9,7 @@ class CustomTextFieldHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       decoration: InputDecoration(
-        hintText: 'Search Song',
+        hintText: StringValues.Search_Song,
         hintStyle: TextStyle(color: ColorMangers.kWhite),
         prefixIcon: Icon(Icons.search,color: ColorMangers.kWhite,),
         filled: true,

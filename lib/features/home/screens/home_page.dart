@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:music_app/core/resources/alignment_mangers.dart';
 import 'package:music_app/core/resources/color_mangers.dart';
 import 'package:music_app/features/home/widgets/custom_text_field_home_page.dart';
+import 'package:music_app/features/home/widgets/custom_title_home_page.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +20,10 @@ class HomePage extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(top: 55, right: 31, left: 31),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomTextFieldHomePage(),
+            CustomTitleHomePage(),
           ],
         ),
       ),
