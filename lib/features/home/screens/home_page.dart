@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:music_app/controller/home_page_controller.dart';
 import 'package:music_app/core/resources/alignment_mangers.dart';
 import 'package:music_app/core/resources/color_mangers.dart';
 import 'package:music_app/core/resources/string_values.dart';
@@ -36,7 +37,9 @@ class HomePage extends StatelessWidget {
                 song: 'song',
                 pathSong: 'pathSong',
               ),
-              itemCount: 10,
+              itemCount: 10, onTap: (){
+              HomePageController.voidnavigtorToPlayMusicScreen(context: context);
+            },
             ),
             CustomTitleHomePage(title: StringValues.recommanded_music),
             //SizedBox(height: HeightValuesMangers.h22),
