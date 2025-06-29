@@ -8,6 +8,7 @@ import 'package:music_app/features/home/widgets/custom_row_recommeded_music.dart
 import 'package:music_app/features/home/widgets/custom_songs_details.dart';
 import 'package:music_app/features/home/widgets/custom_text_field_home_page.dart';
 import 'package:music_app/features/home/widgets/custom_title_home_page.dart';
+import 'package:music_app/models/songsModel.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -22,26 +23,34 @@ class HomePage extends StatelessWidget {
           colors: [ColorMangers.kPrimaryColor, ColorMangers.kDarkBlue],
         ),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CustomTextFieldHomePage(),
-          CustomTitleHomePage(title: StringValues.Search_Song),
-          SizedBox(height: 22),
-          CustomSongsDetails(
-            musicName: 'music name',
-            singre: 'singer',
-            itemCount: 3,
-          ),
-          CustomTitleHomePage(title: StringValues.recommanded_music),
-          SizedBox(height: HeightValuesMangers.h22),
-          Expanded(
-            child: ListView.builder(
-              itemBuilder: (context, index) => CustomRowRecommededMusic(),
-              itemCount: 15,
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CustomTextFieldHomePage(),
+            CustomTitleHomePage(title: StringValues.Search_Song),
+            SizedBox(height: 22),
+            CustomSongsDetails(
+              songsModel: SongsModel(
+                image: 'image',
+                singer: 'singer',
+                song: 'song',
+                pathSong: 'pathSong',
+              ),
+              itemCount: 10,
             ),
-          ),
-        ],
+            CustomTitleHomePage(title: StringValues.recommanded_music),
+            //SizedBox(height: HeightValuesMangers.h22),
+            ListView.separated(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemBuilder: (context, index) => CustomRowRecommededMusic(),
+              itemCount: 30,
+              separatorBuilder: (BuildContext context, int index) =>
+                  SizedBox(height: 10),
+            ),
+          ],
+        ),
       ),
     );
   }

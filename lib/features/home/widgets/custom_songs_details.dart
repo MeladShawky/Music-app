@@ -6,11 +6,11 @@ import 'package:music_app/core/resources/height_values_mangers.dart';
 import 'package:music_app/core/resources/padding_values.dart';
 import 'package:music_app/core/resources/radius_values_manger.dart';
 import 'package:music_app/core/resources/width_values_mangers.dart';
+import 'package:music_app/models/songsModel.dart';
 
 class CustomSongsDetails extends StatelessWidget {
-  const CustomSongsDetails({super.key, required this.musicName, required this.singre, required this.itemCount});
-  final String musicName;
-  final String singre;
+   CustomSongsDetails({super.key,required this.songsModel, required this.itemCount});
+  SongsModel songsModel;
   final int itemCount;
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class CustomSongsDetails extends StatelessWidget {
               ),
               SizedBox(height: HeightValuesMangers.h9),
               Text(
-                musicName,
+                songsModel.song,
                 style: TextStyle(
                   fontSize: FontSizeManger.f15,
                   fontWeight: FontWeight.w500,
@@ -43,7 +43,7 @@ class CustomSongsDetails extends StatelessWidget {
               ),
               SizedBox(height: HeightValuesMangers.h4),
               Text(
-                singre,
+                songsModel.singer,
                 style: TextStyle(
                   fontSize: FontSizeManger.f12,
                   fontWeight: FontWeight.w500,
