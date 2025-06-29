@@ -11,7 +11,7 @@ class CustomTextFieldHomePage extends StatelessWidget {
       padding: const EdgeInsets.only(top: 55, right: 31, left: 31),
       child: TextField(
         decoration: InputDecoration(
-          hintText: StringValues.Search_Song,
+          hintText: StringValues.searchSong,
           hintStyle: TextStyle(color: ColorMangers.kWhite),
           prefixIcon: Icon(Icons.search,color: ColorMangers.kWhite,),
           filled: true,

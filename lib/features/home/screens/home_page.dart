@@ -28,7 +28,7 @@ class HomePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomTextFieldHomePage(),
-            CustomTitleHomePage(title: StringValues.Search_Song),
+            CustomTitleHomePage(title: StringValues.searchSong),
             SizedBox(height: 22),
             CustomSearchDetails(
               songsModel: SongsModel(
@@ -41,7 +41,7 @@ class HomePage extends StatelessWidget {
               HomePageController.voidnavigtorToPlayMusicScreen(context: context);
             },
             ),
-            CustomTitleHomePage(title: StringValues.recommanded_music),
+            CustomTitleHomePage(title: StringValues.recommandedMusic),
             //SizedBox(height: HeightValuesMangers.h22),
             ListView.separated(
               shrinkWrap: true,

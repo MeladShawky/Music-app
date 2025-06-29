@@ -38,7 +38,7 @@ class OnBoardingScreen extends StatelessWidget {
             SizedBox(height: 58),
             CustomButtonOnBoardingPage(onPressed: (){
               OnBoardingPageController.navigateToHomeScreen(context: context);
-            }, text: StringValues.get_started,),
+            }, text: StringValues.getStarted,),
             CustomImageOnBoardingPage(),
 
           ],
