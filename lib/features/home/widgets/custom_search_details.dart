@@ -15,7 +15,7 @@ class CustomSearchDetails extends StatelessWidget {
    final GestureTapCallback onTap;
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 210,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: PaddingValues.p18),

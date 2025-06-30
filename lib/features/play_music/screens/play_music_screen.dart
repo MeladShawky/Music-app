@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:music_app/core/resources/alignment_mangers.dart';
 import 'package:music_app/core/resources/color_mangers.dart';
-import 'package:music_app/core/resources/font_manger.dart';
 import 'package:music_app/features/play_music/widgets/custom_app_bar_play_music_screen.dart';
+import 'package:music_app/features/play_music/widgets/custom_dongs_detail_play_music.dart';
 
 class PlayMusicScreen extends StatelessWidget {
   const PlayMusicScreen({super.key});
@@ -18,6 +18,18 @@ class PlayMusicScreen extends StatelessWidget {
             begin: Alignment(AlignmentMangersx.x0_20, AlignmentMangersy.y_0_90),
             end: Alignment(AlignmentMangersx.x_0_20, AlignmentMangersy.y0_98),
             colors: [ColorMangers.kPrimaryColor, ColorMangers.kDarkBlue],
+          ),
+        ),
+        child: SafeArea(
+          child: SizedBox(
+            width: double.infinity,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(height: 124,),
+                CustomDongsDetailPlayMusic(),
+              ],
+            ),
           ),
         ),
       ),

@@ -3,7 +3,7 @@ import 'package:music_app/core/resources/color_mangers.dart';
 import 'package:music_app/core/resources/string_values.dart';
 
 class CustomTextFieldHomePage extends StatelessWidget {
-  const CustomTextFieldHomePage({Key? key}) : super(key: key);
+  const CustomTextFieldHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {

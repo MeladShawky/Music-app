@@ -1,4 +1,4 @@
- class SongsModel {
+class SongsModel {
 
   SongsModel({
     required this.image,
