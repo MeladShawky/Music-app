@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:music_app/core/resources/alignment_mangers.dart';
+import 'package:music_app/core/resources/assets_manger.dart';
 import 'package:music_app/core/resources/color_mangers.dart';
 import 'package:music_app/features/play_music/widgets/custom_app_bar_play_music_screen.dart';
 import 'package:music_app/features/play_music/widgets/custom_dongs_detail_play_music.dart';
@@ -28,6 +29,15 @@ class PlayMusicScreen extends StatelessWidget {
               children: [
                 SizedBox(height: 124,),
                 CustomDongsDetailPlayMusic(),
+                Row(
+                  children: [
+                    Image(image: AssetImage(AssetsManger.vector1)),
+                    Image(image: AssetImage(AssetsManger.vector2)),
+                    Image(image: AssetImage(AssetsManger.vector3)),
+                    Image(image: AssetImage(AssetsManger.vector4)),
+                    Image(image: AssetImage(AssetsManger.vector5)),
+                  ],
+                )
               ],
             ),
           ),
