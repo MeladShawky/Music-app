@@ -6,5 +6,6 @@ class WidthValuesMangers {
   static const double w2=2;
   static const double w22=22;
   static const double w13=13;
+  static const double w38=38;
 
 }

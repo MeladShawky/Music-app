@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:music_app/core/resources/assets_manger.dart';
 import 'package:music_app/core/resources/color_mangers.dart';
+import 'package:music_app/core/resources/height_values_mangers.dart';
+import 'package:music_app/core/resources/radius_values_manger.dart';
+import 'package:music_app/core/resources/width_values_mangers.dart';
 
 class CustomButtonControllerPlayMusic extends StatelessWidget {
   const CustomButtonControllerPlayMusic({super.key});
@@ -13,10 +16,10 @@ class CustomButtonControllerPlayMusic extends StatelessWidget {
       children: [
         Image(image: AssetImage(AssetsManger.vector1)),
         Container(
-          width: 38,
-          height: 38,
+          width: WidthValuesMangers.w38,
+          height: HeightValuesMangers.h38,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(RadiusValuesManger.r20),
             gradient: LinearGradient(
               begin: Alignment(0, -1),
               end: Alignment(0, 1),
@@ -29,15 +32,15 @@ class CustomButtonControllerPlayMusic extends StatelessWidget {
           child: Image(image: AssetImage(AssetsManger.vector2)),
         ),
         CircleAvatar(
-          radius: 30,
+          radius: RadiusValuesManger.r30,
           backgroundColor: ColorMangers.kLightWhite,
           child: Image(image: AssetImage(AssetsManger.vector3)),
         ),
         Container(
-          width: 38,
-          height: 38,
+          width: WidthValuesMangers.w38,
+          height: HeightValuesMangers.h38,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(RadiusValuesManger.r20),
             gradient: LinearGradient(
               begin: Alignment(0, -1),
               end: Alignment(0, 1),
