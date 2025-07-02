@@ -7,52 +7,62 @@ import 'package:music_app/core/resources/radius_values_manger.dart';
 import 'package:music_app/core/resources/width_values_mangers.dart';
 
 class CustomButtonControllerPlayMusic extends StatelessWidget {
-  const CustomButtonControllerPlayMusic({super.key});
-
+  const CustomButtonControllerPlayMusic({
+    super.key,
+    required this.onChanged,
+    required this.value,
+  });
+  final ValueChanged<double> onChanged;
+  final double value;
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
+    return Column(
       children: [
-        Image(image: AssetImage(AssetsManger.vector1)),
-        Container(
-          width: WidthValuesMangers.w38,
-          height: HeightValuesMangers.h38,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(RadiusValuesManger.r20),
-            gradient: LinearGradient(
-              begin: Alignment(0, -1),
-              end: Alignment(0, 1),
-              colors: [
-                ColorMangers.kLightWhite2,
-                ColorMangers.kLightWhite,
-              ],
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Image(image: AssetImage(AssetsManger.vector1)),
+            Container(
+              width: WidthValuesMangers.w38,
+              height: HeightValuesMangers.h38,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(RadiusValuesManger.r20),
+                gradient: LinearGradient(
+                  begin: Alignment(0, -1),
+                  end: Alignment(0, 1),
+                  colors: [ColorMangers.kLightWhite2, ColorMangers.kLightWhite],
+                ),
+              ),
+              child: Image(image: AssetImage(AssetsManger.vector2)),
             ),
-          ),
-          child: Image(image: AssetImage(AssetsManger.vector2)),
-        ),
-        CircleAvatar(
-          radius: RadiusValuesManger.r30,
-          backgroundColor: ColorMangers.kLightWhite,
-          child: Image(image: AssetImage(AssetsManger.vector3)),
-        ),
-        Container(
-          width: WidthValuesMangers.w38,
-          height: HeightValuesMangers.h38,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(RadiusValuesManger.r20),
-            gradient: LinearGradient(
-              begin: Alignment(0, -1),
-              end: Alignment(0, 1),
-              colors: [
-                ColorMangers.kLightWhite2,
-                ColorMangers.kLightWhite,
-              ],
+            CircleAvatar(
+              radius: RadiusValuesManger.r30,
+              backgroundColor: ColorMangers.kLightWhite,
+              child: Image(image: AssetImage(AssetsManger.vector3)),
             ),
-          ),
-          child: Image(image: AssetImage(AssetsManger.vector4)),
+            Container(
+              width: WidthValuesMangers.w38,
+              height: HeightValuesMangers.h38,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(RadiusValuesManger.r20),
+                gradient: LinearGradient(
+                  begin: Alignment(0, -1),
+                  end: Alignment(0, 1),
+                  colors: [ColorMangers.kLightWhite2, ColorMangers.kLightWhite],
+                ),
+              ),
+              child: Image(image: AssetImage(AssetsManger.vector4)),
+            ),
+            Image(image: AssetImage(AssetsManger.vector5)),
+          ],
         ),
-        Image(image: AssetImage(AssetsManger.vector5)),
+        SizedBox(height: HeightValuesMangers.h28),
+        Slider(
+          value: value,
+          onChanged: onChanged,
+          activeColor: ColorMangers.kLightWhite,
+          inactiveColor: Color(0xff2F5D9A),
+        ),
       ],
     );
   }

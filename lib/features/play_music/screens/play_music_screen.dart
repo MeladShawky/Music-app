@@ -31,7 +31,7 @@ class PlayMusicScreen extends StatelessWidget {
                 SizedBox(height: HeightValuesMangers.h124),
                 CustomDongsDetailPlayMusic(),
                 SizedBox(height: HeightValuesMangers.h28),
-                CustomButtonControllerPlayMusic(),
+                CustomButtonControllerPlayMusic(onChanged: (double value) {  }, value: 0.6,),
               ],
             ),
           ),
