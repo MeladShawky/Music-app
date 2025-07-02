@@ -6,6 +6,7 @@ import 'package:music_app/core/resources/height_values_mangers.dart';
 import 'package:music_app/features/play_music/widgets/custom_app_bar_play_music_screen.dart';
 import 'package:music_app/features/play_music/widgets/custom_button_controller_play_music.dart';
 import 'package:music_app/features/play_music/widgets/custom_dongs_detail_play_music.dart';
+import 'package:music_app/features/play_music/widgets/custom_tools2_play_music.dart';
 import 'package:music_app/features/play_music/widgets/custom_tools_play_music.dart';
 
 class PlayMusicScreen extends StatelessWidget {
@@ -30,7 +31,7 @@ class PlayMusicScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(height: HeightValuesMangers.h124),
+                Spacer(),
                 CustomDongsDetailPlayMusic(),
                 SizedBox(height: HeightValuesMangers.h28),
                 CustomButtonControllerPlayMusic(
@@ -38,6 +39,10 @@ class PlayMusicScreen extends StatelessWidget {
                   value: 0.6,
                 ),
                 CustomToolsPlayMusic(),
+                CustomTools2PlayMusic(),
+                SizedBox(
+                  height: HeightValuesMangers.h11,
+                )
               ],
             ),
           ),
