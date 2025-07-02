@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:music_app/core/resources/assets_manger.dart';
 import 'package:music_app/core/resources/color_mangers.dart';
+import 'package:music_app/core/resources/font_manger.dart';
 import 'package:music_app/core/resources/height_values_mangers.dart';
 import 'package:music_app/core/resources/radius_values_manger.dart';
 import 'package:music_app/core/resources/width_values_mangers.dart';
@@ -57,11 +58,43 @@ class CustomButtonControllerPlayMusic extends StatelessWidget {
           ],
         ),
         SizedBox(height: HeightValuesMangers.h28),
-        Slider(
-          value: value,
-          onChanged: onChanged,
-          activeColor: ColorMangers.kLightWhite,
-          inactiveColor: Color(0xff2F5D9A),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 22),
+          child: SliderTheme(
+            data: SliderThemeData(
+              overlayShape: SliderComponentShape.noOverlay
+            ),
+            child: Slider(
+              value: value,
+              onChanged: onChanged,
+              activeColor: ColorMangers.kLightWhite,
+              inactiveColor: Color(0xff2F5D9A),
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 7),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                '2:03',
+                style: TextStyle(
+                  color: ColorMangers.kLightWhite,
+                  fontSize: FontSizeManger.f12,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              Text(
+                '4:03',
+                style: TextStyle(
+                  color: ColorMangers.kLightWhite,
+                  fontSize: FontSizeManger.f12,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
+          ),
         ),
       ],
     );
