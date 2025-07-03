@@ -10,7 +10,7 @@ import 'package:music_app/models/songsModel.dart';
 
 class CustomSearchDetails extends StatelessWidget {
    CustomSearchDetails({super.key,required this.songsModel, required this.itemCount, required this.onTap});
-  SongsModel songsModel;
+  List<SongsModel> songsModel;
   final int itemCount;
    final GestureTapCallback onTap;
   @override
@@ -29,7 +29,7 @@ class CustomSearchDetails extends StatelessWidget {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(RadiusValuesManger.r15),
                   child: Image(
-                    image: AssetImage(AssetsManger.music1),
+                    image: AssetImage(songsModel[index].image),
                     fit: BoxFit.cover,
                     width: WidthValuesMangers.w150,
                     height: HeightValuesMangers.h150,
@@ -37,7 +37,7 @@ class CustomSearchDetails extends StatelessWidget {
                 ),
                 SizedBox(height: HeightValuesMangers.h9),
                 Text(
-                  songsModel.song,
+                  songsModel[index].song,
                   style: TextStyle(
                     fontSize: FontSizeManger.f15,
                     fontWeight: FontWeight.w500,
@@ -46,7 +46,7 @@ class CustomSearchDetails extends StatelessWidget {
                 ),
                 SizedBox(height: HeightValuesMangers.h4),
                 Text(
-                  songsModel.singer,
+                  songsModel[index].singer,
                   style: TextStyle(
                     fontSize: FontSizeManger.f12,
                     fontWeight: FontWeight.w500,

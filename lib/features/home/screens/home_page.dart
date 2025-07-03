@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:music_app/controller/home_page_controller.dart';
 import 'package:music_app/core/resources/alignment_mangers.dart';
 import 'package:music_app/core/resources/color_mangers.dart';
+import 'package:music_app/core/resources/constants_value.dart';
 import 'package:music_app/core/resources/string_values.dart';
 import 'package:music_app/features/home/widgets/custom_row_recommeded_music.dart';
 import 'package:music_app/features/home/widgets/custom_search_details.dart';
@@ -31,13 +32,8 @@ class HomePage extends StatelessWidget {
             CustomTitleHomePage(title: StringValues.searchSong),
             SizedBox(height: 22),
             CustomSearchDetails(
-              songsModel: SongsModel(
-                image: 'image',
-                singer: 'singer',
-                song: 'song',
-                pathSong: 'pathSong',
-              ),
-              itemCount: 10, onTap: (){
+              songsModel:ConstantsValue.listSongs,
+              itemCount: 3, onTap: (){
               HomePageController.voidnavigtorToPlayMusicScreen(context: context);
             },
             ),
