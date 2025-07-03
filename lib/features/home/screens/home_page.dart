@@ -44,7 +44,7 @@ class HomePage extends StatelessWidget {
             CustomRecommandedMusicHomePage(
               onTap: () {
                 HomePageController.navigtorToPlayMusicScreen(context: context);
-              },
+              }, songsModel:ConstantsValue.listSongs,
             ),
           ],
         ),
