@@ -11,7 +11,7 @@ class CustomRecommandedMusicHomePage extends StatelessWidget {
       physics: NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) =>
           InkWell(onTap: onTap, child: CustomRowRecommededMusic()),
-      itemCount: 30,
+      itemCount: 10,
       separatorBuilder: (BuildContext context, int index) =>
           SizedBox(height: 10),
     );
