@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:music_app/controller/home_page_controller.dart';
 import 'package:music_app/core/resources/alignment_mangers.dart';
 import 'package:music_app/core/resources/color_mangers.dart';
 import 'package:music_app/core/resources/height_values_mangers.dart';
@@ -16,7 +17,11 @@ class PlayMusicScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: CustomAppBarPlayMusicScreen(),
+      appBar: CustomAppBarPlayMusicScreen(
+        onPressed: () {
+          HomePageController.navigtorToPop(context: context);
+        },
+      ),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -40,9 +45,7 @@ class PlayMusicScreen extends StatelessWidget {
                 ),
                 CustomToolsPlayMusic(),
                 CustomTools2PlayMusic(),
-                SizedBox(
-                  height: HeightValuesMangers.h11,
-                )
+                SizedBox(height: HeightValuesMangers.h11),
               ],
             ),
           ),
