@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:music_app/core/resources/assets_manger.dart';
 import 'package:music_app/core/resources/color_mangers.dart';
 import 'package:music_app/core/resources/font_manger.dart';
 import 'package:music_app/core/resources/height_values_mangers.dart';
@@ -11,8 +10,8 @@ import 'package:music_app/models/songsModel.dart';
 class CustomSearchDetails extends StatelessWidget {
    CustomSearchDetails({super.key,required this.songsModel, required this.itemCount, required this.onTap});
   List<SongsModel> songsModel;
+   final Function(int index) onTap;
   final int itemCount;
-   final GestureTapCallback onTap;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -22,7 +21,9 @@ class CustomSearchDetails extends StatelessWidget {
         child: ListView.separated(
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) => GestureDetector(
-            onTap: onTap,
+            onTap: (){
+              onTap(index);
+            },
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+
 import 'package:music_app/core/resources/color_mangers.dart';
 class CustomToolsPlayMusic extends StatelessWidget {
   const CustomToolsPlayMusic({super.key});

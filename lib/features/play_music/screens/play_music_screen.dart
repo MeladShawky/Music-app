@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:music_app/controller/home_page_controller.dart';
 import 'package:music_app/core/resources/alignment_mangers.dart';
@@ -12,9 +11,9 @@ import 'package:music_app/features/play_music/widgets/custom_tools_play_music.da
 
 class PlayMusicScreen extends StatelessWidget {
   const PlayMusicScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
+    int index =ModalRoute.of(context)!.settings.arguments as int;
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: CustomAppBarPlayMusicScreen(
@@ -36,6 +35,7 @@ class PlayMusicScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                Text(index.toString()),
                 Spacer(),
                 CustomDongsDetailPlayMusic(),
                 SizedBox(height: HeightValuesMangers.h28),

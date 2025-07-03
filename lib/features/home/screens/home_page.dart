@@ -6,11 +6,11 @@ import 'package:music_app/core/resources/color_mangers.dart';
 import 'package:music_app/core/resources/constants_value.dart';
 import 'package:music_app/core/resources/string_values.dart';
 import 'package:music_app/features/home/widgets/custom_recommanded_music_home_page.dart';
-import 'package:music_app/features/home/widgets/custom_row_recommeded_music.dart';
+
 import 'package:music_app/features/home/widgets/custom_search_details.dart';
 import 'package:music_app/features/home/widgets/custom_text_field_home_page.dart';
 import 'package:music_app/features/home/widgets/custom_title_home_page.dart';
-import 'package:music_app/models/songsModel.dart';
+
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -18,6 +18,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: double.infinity,
       decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment(AlignmentMangersx.x0_20, AlignmentMangersy.y_0_90),
@@ -35,15 +36,15 @@ class HomePage extends StatelessWidget {
             CustomSearchDetails(
               songsModel: ConstantsValue.listSongs,
               itemCount: 3,
-              onTap: () {
-                HomePageController.navigtorToPlayMusicScreen(context: context);
+              onTap: (index) {
+                HomePageController.navigtorToPlayMusicScreen(context: context, index: index );
               },
             ),
             CustomTitleHomePage(title: StringValues.recommandedMusic),
             //SizedBox(height: HeightValuesMangers.h22),
             CustomRecommandedMusicHomePage(
-              onTap: () {
-                HomePageController.navigtorToPlayMusicScreen(context: context);
+              onTap: (index) {
+                HomePageController.navigtorToPlayMusicScreen(context: context,index: index);
               }, songsModel:ConstantsValue.listSongs,
             ),
           ],
