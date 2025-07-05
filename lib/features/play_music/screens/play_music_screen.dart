@@ -10,7 +10,7 @@ import 'package:music_app/features/play_music/widgets/custom_button_controller_p
 import 'package:music_app/features/play_music/widgets/custom_songs_detail_play_music.dart';
 import 'package:music_app/features/play_music/widgets/custom_tools2_play_music.dart';
 import 'package:music_app/features/play_music/widgets/custom_tools_play_music.dart';
-import 'package:audioplayers/audioplayers.dart';
+
 
 class PlayMusicScreen extends StatefulWidget {
   const PlayMusicScreen({super.key});
@@ -72,7 +72,9 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
                 SizedBox(height: HeightValuesMangers.h28),
                 CustomButtonControllerPlayMusic(
                   onChanged: (double value) {},
-                  value: 0.6,
+                  value: 0.6, onStop: () {
+                  _PlayMusicController.stopAudio();
+                },
                 ),
                 CustomToolsPlayMusic(),
                 CustomTools2PlayMusic(),

@@ -11,8 +11,9 @@ class CustomButtonControllerPlayMusic extends StatelessWidget {
   const CustomButtonControllerPlayMusic({
     super.key,
     required this.onChanged,
-    required this.value,
+    required this.value, required this.onStop,
   });
+  final GestureTapCallback onStop;
   final ValueChanged<double> onChanged;
   final double value;
   @override
@@ -36,10 +37,13 @@ class CustomButtonControllerPlayMusic extends StatelessWidget {
               ),
               child: Image(image: AssetImage(AssetsManger.vector2)),
             ),
-            CircleAvatar(
-              radius: RadiusValuesManger.r30,
-              backgroundColor: ColorMangers.kLightWhite,
-              child: Image(image: AssetImage(AssetsManger.vector3)),
+            InkWell(
+              onTap: onStop,
+              child: CircleAvatar(
+                radius: RadiusValuesManger.r30,
+                backgroundColor: ColorMangers.kLightWhite,
+                child: Image(image: AssetImage(AssetsManger.vector3)),
+              ),
             ),
             Container(
               width: WidthValuesMangers.w38,
