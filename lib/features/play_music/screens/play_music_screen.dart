@@ -7,7 +7,7 @@ import 'package:music_app/core/resources/constants_value.dart';
 import 'package:music_app/core/resources/height_values_mangers.dart';
 import 'package:music_app/features/play_music/widgets/custom_app_bar_play_music_screen.dart';
 import 'package:music_app/features/play_music/widgets/custom_button_controller_play_music.dart';
-import 'package:music_app/features/play_music/widgets/custom_dongs_detail_play_music.dart';
+import 'package:music_app/features/play_music/widgets/custom_songs_detail_play_music.dart';
 import 'package:music_app/features/play_music/widgets/custom_tools2_play_music.dart';
 import 'package:music_app/features/play_music/widgets/custom_tools_play_music.dart';
 import 'package:audioplayers/audioplayers.dart';
@@ -67,9 +67,8 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(index.toString()),
                 Spacer(),
-                CustomDongsDetailPlayMusic(),
+                CustomSongsDetailPlayMusic(songsModel: ConstantsValue.listSongs[index],),
                 SizedBox(height: HeightValuesMangers.h28),
                 CustomButtonControllerPlayMusic(
                   onChanged: (double value) {},
