@@ -40,7 +40,7 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
 
 @override
   void dispose() {
-  _PlayMusicController.disposeAudio();
+ // _PlayMusicController.disposeAudio();
     super.dispose();
   }
 
