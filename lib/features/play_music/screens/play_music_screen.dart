@@ -73,8 +73,8 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
                 CustomButtonControllerPlayMusic(
                   onChanged: (double value) {},
                   value: 0.6, onStop: () {
-                  _PlayMusicController.stopAudio();
-                },
+                  _PlayMusicController.changePlayStatus();
+                }, playStatusOutputData: _PlayMusicController.playStatusOutputData,
                 ),
                 CustomToolsPlayMusic(),
                 CustomTools2PlayMusic(),

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:music_app/core/resources/assets_manger.dart';
@@ -11,9 +13,12 @@ class CustomButtonControllerPlayMusic extends StatelessWidget {
   const CustomButtonControllerPlayMusic({
     super.key,
     required this.onChanged,
-    required this.value, required this.onStop,
+    required this.value,
+    required this.onStop,
+    required this.playStatusOutputData,
   });
   final GestureTapCallback onStop;
+  final Stream playStatusOutputData;
   final ValueChanged<double> onChanged;
   final double value;
   @override
@@ -39,10 +44,19 @@ class CustomButtonControllerPlayMusic extends StatelessWidget {
             ),
             InkWell(
               onTap: onStop,
-              child: CircleAvatar(
-                radius: RadiusValuesManger.r30,
-                backgroundColor: ColorMangers.kLightWhite,
-                child: Image(image: AssetImage(AssetsManger.vector3)),
+              child: StreamBuilder(
+                stream: playStatusOutputData,
+                builder: (context, snapShot) => CircleAvatar(
+                  radius: RadiusValuesManger.r30,
+                  backgroundColor: ColorMangers.kLightWhite,
+                  child: Image(
+                    image: AssetImage(
+                      snapShot.data == true
+                          ? AssetsManger.vector3
+                          : AssetsManger.play,
+                    ),
+                  ),
+                ),
               ),
             ),
             Container(
@@ -65,9 +79,7 @@ class CustomButtonControllerPlayMusic extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 22),
           child: SliderTheme(
-            data: SliderThemeData(
-              overlayShape: SliderComponentShape.noOverlay
-            ),
+            data: SliderThemeData(overlayShape: SliderComponentShape.noOverlay),
             child: Slider(
               value: value,
               onChanged: onChanged,
@@ -77,7 +89,7 @@ class CustomButtonControllerPlayMusic extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 7),
+          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 7),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
