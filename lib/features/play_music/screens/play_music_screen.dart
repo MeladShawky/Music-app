@@ -11,7 +11,6 @@ import 'package:music_app/features/play_music/widgets/custom_songs_detail_play_m
 import 'package:music_app/features/play_music/widgets/custom_tools2_play_music.dart';
 import 'package:music_app/features/play_music/widgets/custom_tools_play_music.dart';
 
-
 class PlayMusicScreen extends StatefulWidget {
   const PlayMusicScreen({super.key});
 
@@ -34,13 +33,13 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
     super.didChangeDependencies();
     index = ModalRoute.of(context)!.settings.arguments as int;
 
-     _PlayMusicController=PlayMusicController(index);
+    _PlayMusicController = PlayMusicController(index);
     _PlayMusicController.play();
   }
 
-@override
+  @override
   void dispose() {
- // _PlayMusicController.disposeAudio();
+    // _PlayMusicController.disposeAudio();
     super.dispose();
   }
 
@@ -68,13 +67,19 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Spacer(),
-                CustomSongsDetailPlayMusic(songsModel: ConstantsValue.listSongs[index],),
+                CustomSongsDetailPlayMusic(
+                  songsModel: ConstantsValue.listSongs[index],
+                ),
                 SizedBox(height: HeightValuesMangers.h28),
                 CustomButtonControllerPlayMusic(
                   onChanged: (double value) {},
-                  value: 0.6, onStop: () {
-                  _PlayMusicController.changePlayStatus();
-                }, playStatusOutputData: _PlayMusicController.playStatusOutputData,
+                  value: 0.6,
+                  onStop: () {
+                    _PlayMusicController.changePlayStatus();
+                  },
+                  playStatusOutputData:
+                      _PlayMusicController.playStatusOutputData,
+                  audioTime: _PlayMusicController.audioTime.toString(), audioTimeOutputData:_PlayMusicController.audioTimeOutputData ,
                 ),
                 CustomToolsPlayMusic(),
                 CustomTools2PlayMusic(),

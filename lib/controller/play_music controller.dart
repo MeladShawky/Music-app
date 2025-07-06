@@ -12,6 +12,10 @@ class PlayMusicController {
   late StreamController<bool> playStatusStreamController ;
   late Sink<bool> playStatusInputData ;
   late Stream<bool> playStatusOutputData ;
+
+  late StreamController<Duration> audioTimeStreamController ;
+  late Sink<Duration> audioTimeInputData ;
+  late Stream<Duration> audioTimeOutputData ;
   PlayMusicController._internal(this.index){
     audioPlayer = AudioPlayer();
     audioCache = AudioCache(prefix: "");
@@ -19,6 +23,11 @@ class PlayMusicController {
     playStatusInputData=playStatusStreamController.sink;
     playStatusOutputData=playStatusStreamController.stream;
     playStatusOutputData=playStatusStreamController.stream.asBroadcastStream();
+
+    audioTimeStreamController=StreamController();
+    audioTimeInputData=audioTimeStreamController.sink;
+    audioTimeOutputData=audioTimeStreamController.stream;
+    audioTimeOutputData=audioTimeStreamController.stream.asBroadcastStream();
   }
   static PlayMusicController? instance;
 
@@ -27,10 +36,12 @@ class PlayMusicController {
     instance ??= PlayMusicController._internal(index);
     return instance!;
   }
-
+  Duration? audioTime;
   void play() async {
-    uri = await audioCache.load(ConstantsValue.listSongs[index].pathSong);
-    audioPlayer.play(UrlSource(uri.toString()));
+     uri = await audioCache.load(ConstantsValue.listSongs[index].pathSong);
+     await audioPlayer.play(UrlSource(uri.toString()));
+    audioTime= await audioPlayer.getDuration();
+    audioTimeInputData.add(audioTime!);
     isPlaying=true;
     playStatusInputData.add(isPlaying);
   }
