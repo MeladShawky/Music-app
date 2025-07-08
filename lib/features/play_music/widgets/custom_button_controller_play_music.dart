@@ -16,14 +16,14 @@ class CustomButtonControllerPlayMusic extends StatelessWidget {
     required this.value,
     required this.onStop,
     required this.playStatusOutputData,
-    required this.audioTime, required this.audioTimeOutputData,
+    required this.audioTime,
   });
   final GestureTapCallback onStop;
   final Stream playStatusOutputData;
-  final Stream<Duration> audioTimeOutputData;
   final ValueChanged<double> onChanged;
   final double value;
   final String audioTime;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -104,17 +104,14 @@ class CustomButtonControllerPlayMusic extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              StreamBuilder<Duration>(
-                stream: audioTimeOutputData,
-                builder: (context, snapshot) => Text(
-                  snapshot.data.toString() ?? '00:00',
-                  style: TextStyle(
-                    color: ColorMangers.kLightWhite,
-                    fontSize: FontSizeManger.f12,
-                    fontWeight: FontWeight.w500,
-                  ),
+              Text(
+              audioTime,
+                style: TextStyle(
+                  color: ColorMangers.kLightWhite,
+                  fontSize: FontSizeManger.f12,
+                  fontWeight: FontWeight.w500,
                 ),
-              ),
+              )
             ],
           ),
         ),

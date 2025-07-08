@@ -34,7 +34,7 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
     index = ModalRoute.of(context)!.settings.arguments as int;
 
     _PlayMusicController = PlayMusicController(index);
-    _PlayMusicController.play();
+    // _PlayMusicController.play();
   }
 
   @override
@@ -52,42 +52,56 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
           HomePageController.navigtorToPop(context: context);
         },
       ),
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment(AlignmentMangersx.x0_20, AlignmentMangersy.y_0_90),
-            end: Alignment(AlignmentMangersx.x_0_20, AlignmentMangersy.y0_98),
-            colors: [ColorMangers.kPrimaryColor, ColorMangers.kDarkBlue],
-          ),
-        ),
-        child: SafeArea(
-          child: SizedBox(
-            width: double.infinity,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Spacer(),
-                CustomSongsDetailPlayMusic(
-                  songsModel: ConstantsValue.listSongs[index],
+      body: FutureBuilder(
+        future: _PlayMusicController.play(),
+        builder: ( context, snapshot){
+          if(snapshot.connectionState==ConnectionState.waiting){
+            return Center(child: CircularProgressIndicator());
+          }else if(snapshot.connectionState==ConnectionState.done){
+            return Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment(AlignmentMangersx.x0_20, AlignmentMangersy.y_0_90),
+                  end: Alignment(AlignmentMangersx.x_0_20, AlignmentMangersy.y0_98),
+                  colors: [ColorMangers.kPrimaryColor, ColorMangers.kDarkBlue],
                 ),
-                SizedBox(height: HeightValuesMangers.h28),
-                CustomButtonControllerPlayMusic(
-                  onChanged: (double value) {},
-                  value: 0.6,
-                  onStop: () {
-                    _PlayMusicController.changePlayStatus();
-                  },
-                  playStatusOutputData:
-                      _PlayMusicController.playStatusOutputData,
-                  audioTime: _PlayMusicController.audioTime.toString(), audioTimeOutputData:_PlayMusicController.audioTimeOutputData ,
+              ),
+              child: SafeArea(
+                child: SizedBox(
+                  width: double.infinity,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Spacer(),
+                      CustomSongsDetailPlayMusic(
+                        songsModel: ConstantsValue.listSongs[index],
+                      ),
+                      SizedBox(height: HeightValuesMangers.h28),
+                      CustomButtonControllerPlayMusic(
+                        onChanged: (double value) {},
+                        value: 0.6,
+                        onStop: () {
+                          _PlayMusicController.changePlayStatus();
+                        },
+                        playStatusOutputData:
+                        _PlayMusicController.playStatusOutputData,
+                        audioTime: _PlayMusicController.trasferDurationToMinuetAndSecond(snapshot.data),
+
+
+                      ),
+                      CustomToolsPlayMusic(),
+                      CustomTools2PlayMusic(),
+                      SizedBox(height: HeightValuesMangers.h11),
+                    ],
+                  ),
                 ),
-                CustomToolsPlayMusic(),
-                CustomTools2PlayMusic(),
-                SizedBox(height: HeightValuesMangers.h11),
-              ],
-            ),
-          ),
-        ),
+              ),
+            );
+          }else{
+            return Text('erroe');
+          }
+        }
+
       ),
     );
   }
