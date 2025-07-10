@@ -8,10 +8,14 @@ class PlayMusicController {
   late AudioPlayer audioPlayer;
   late AudioCache audioCache;
   late Uri uri;
-  late bool isPlaying;
+  late bool isPlaying = true;
   late StreamController<bool> playStatusStreamController;
   late Sink<bool> playStatusInputData;
   late Stream<bool> playStatusOutputData;
+
+  late StreamController<Duration> durationNowStreamController;
+  late Sink<Duration> durationNowInputData;
+  late Stream<String> durationNowOutputData;
 
   PlayMusicController._internal(this.index) {
     audioPlayer = AudioPlayer();
@@ -21,6 +25,14 @@ class PlayMusicController {
     playStatusOutputData = playStatusStreamController.stream;
     playStatusOutputData = playStatusStreamController.stream
         .asBroadcastStream();
+    durationNowStreamController = StreamController();
+    durationNowInputData = durationNowStreamController.sink;
+    durationNowOutputData = durationNowStreamController.stream.map(
+      (event) => trasferDurationToMinuetAndSecond(event),
+    );
+    durationNowOutputData = durationNowStreamController.stream
+        .asBroadcastStream()
+        .map((event) => trasferDurationToMinuetAndSecond(event));
   }
   static PlayMusicController? instance;
 
@@ -34,6 +46,9 @@ class PlayMusicController {
     uri = await audioCache.load(ConstantsValue.listSongs[index].pathSong);
     await audioPlayer.play(UrlSource(uri.toString()));
     audioTime = await audioPlayer.getDuration();
+    audioPlayer.onPositionChanged.listen((event) {
+      durationNowInputData.add(event);
+    });
     isPlaying = true;
     playStatusInputData.add(isPlaying);
     return audioTime;
@@ -62,8 +77,11 @@ class PlayMusicController {
   }
 
   String trasferDurationToMinuetAndSecond(Duration? duration) {
-    String minute = duration!.inMinutes.remainder(60).toString().padLeft(2, '0');
-    String second = duration!.inSeconds.remainder(60).toString().padLeft(2, '0');
+    String minute = duration!.inMinutes
+        .remainder(60)
+        .toString()
+        .padLeft(2, '0');
+    String second = duration.inSeconds.remainder(60).toString().padLeft(2, '0');
     return '$minute:$second';
   }
 }

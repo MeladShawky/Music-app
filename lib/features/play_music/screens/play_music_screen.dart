@@ -54,15 +54,21 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
       ),
       body: FutureBuilder(
         future: _PlayMusicController.play(),
-        builder: ( context, snapshot){
-          if(snapshot.connectionState==ConnectionState.waiting){
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
-          }else if(snapshot.connectionState==ConnectionState.done){
+          } else if (snapshot.connectionState == ConnectionState.done) {
             return Container(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  begin: Alignment(AlignmentMangersx.x0_20, AlignmentMangersy.y_0_90),
-                  end: Alignment(AlignmentMangersx.x_0_20, AlignmentMangersy.y0_98),
+                  begin: Alignment(
+                    AlignmentMangersx.x0_20,
+                    AlignmentMangersy.y_0_90,
+                  ),
+                  end: Alignment(
+                    AlignmentMangersx.x_0_20,
+                    AlignmentMangersy.y0_98,
+                  ),
                   colors: [ColorMangers.kPrimaryColor, ColorMangers.kDarkBlue],
                 ),
               ),
@@ -84,10 +90,13 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
                           _PlayMusicController.changePlayStatus();
                         },
                         playStatusOutputData:
-                        _PlayMusicController.playStatusOutputData,
-                        audioTime: _PlayMusicController.trasferDurationToMinuetAndSecond(snapshot.data),
-
-
+                            _PlayMusicController.playStatusOutputData,
+                        audioTime:
+                            _PlayMusicController.trasferDurationToMinuetAndSecond(
+                              snapshot.data,
+                            ),
+                        durationNowOutputData:
+                            _PlayMusicController.durationNowOutputData,
                       ),
                       CustomToolsPlayMusic(),
                       CustomTools2PlayMusic(),
@@ -97,11 +106,10 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
                 ),
               ),
             );
-          }else{
+          } else {
             return Text('erroe');
           }
-        }
-
+        },
       ),
     );
   }
