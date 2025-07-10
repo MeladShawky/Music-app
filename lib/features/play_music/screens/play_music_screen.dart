@@ -84,7 +84,9 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
                       ),
                       SizedBox(height: HeightValuesMangers.h28),
                       CustomButtonControllerPlayMusic(
-                        onChanged: (double value) {},
+                        onChanged: (double value) {
+                          _PlayMusicController.onChangedThumbSlider(value);
+                        },
                         onStop: () {
                           _PlayMusicController.changePlayStatus();
                         },
@@ -95,7 +97,9 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
                               snapshot.data,
                             ),
                         durationNowOutputData:
-                            _PlayMusicController.durationNowOutputData, sliderValueOutputData: _PlayMusicController.sliderValueNowOutputData,
+                            _PlayMusicController.durationNowOutputData,
+                        sliderValueOutputData:
+                            _PlayMusicController.sliderValueNowOutputData,
                       ),
                       CustomToolsPlayMusic(),
                       CustomTools2PlayMusic(),

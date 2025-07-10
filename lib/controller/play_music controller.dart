@@ -61,6 +61,18 @@ class PlayMusicController {
    valueSlider=(durationNowOnSecond/maxTime)*1.0;
    return valueSlider;
   }
+
+  Duration transferValueSliderToDuration(double sliderValue)
+  {
+    double valueNow=(sliderValue/1.0)*audioTime!.inSeconds.toDouble();
+     return Duration(seconds: valueNow.toInt());
+  }
+
+  void onChangedThumbSlider(double value){
+  Duration duration=transferValueSliderToDuration(value);
+  audioPlayer.seek(duration);
+  }
+
   Future<Duration?> play() async {
     uri = await audioCache.load(ConstantsValue.listSongs[index].pathSong);
     await audioPlayer.play(UrlSource(uri.toString()));
