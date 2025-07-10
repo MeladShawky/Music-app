@@ -9,6 +9,7 @@ class PlayMusicController {
   late AudioCache audioCache;
   late Uri uri;
   late bool isPlaying = true;
+  late double valueSlider=0;
   late StreamController<bool> playStatusStreamController;
   late Sink<bool> playStatusInputData;
   late Stream<bool> playStatusOutputData;
@@ -16,6 +17,11 @@ class PlayMusicController {
   late StreamController<Duration> durationNowStreamController;
   late Sink<Duration> durationNowInputData;
   late Stream<String> durationNowOutputData;
+
+  late StreamController<Duration> sliderValueStreamController;
+  late Sink<Duration> sliderValueNowInputData;
+  late Stream<double> sliderValueNowOutputData;
+
 
   PlayMusicController._internal(this.index) {
     audioPlayer = AudioPlayer();
@@ -33,6 +39,11 @@ class PlayMusicController {
     durationNowOutputData = durationNowStreamController.stream
         .asBroadcastStream()
         .map((event) => trasferDurationToMinuetAndSecond(event));
+
+    sliderValueStreamController = StreamController();
+    sliderValueNowInputData = sliderValueStreamController.sink;
+    sliderValueNowOutputData = sliderValueStreamController.stream.map((event)=>transferDurationToValueSlider(event));
+    sliderValueNowOutputData = sliderValueStreamController.stream.map((event)=>transferDurationToValueSlider(event));
   }
   static PlayMusicController? instance;
 
@@ -42,12 +53,21 @@ class PlayMusicController {
     return instance!;
   }
   Duration? audioTime;
+
+  double transferDurationToValueSlider(Duration duration)
+  {
+    double durationNowOnSecond=duration.inSeconds.toDouble();
+    double maxTime=audioTime!.inSeconds.toDouble();
+   valueSlider=(durationNowOnSecond/maxTime)*1.0;
+   return valueSlider;
+  }
   Future<Duration?> play() async {
     uri = await audioCache.load(ConstantsValue.listSongs[index].pathSong);
     await audioPlayer.play(UrlSource(uri.toString()));
     audioTime = await audioPlayer.getDuration();
     audioPlayer.onPositionChanged.listen((event) {
       durationNowInputData.add(event);
+      sliderValueNowInputData.add(event);
     });
     isPlaying = true;
     playStatusInputData.add(isPlaying);

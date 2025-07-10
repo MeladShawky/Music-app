@@ -13,16 +13,16 @@ class CustomButtonControllerPlayMusic extends StatelessWidget {
   const CustomButtonControllerPlayMusic({
     super.key,
     required this.onChanged,
-    required this.value,
     required this.onStop,
     required this.playStatusOutputData,
-    required this.audioTime, required this.durationNowOutputData,
+    required this.audioTime, required this.durationNowOutputData, required this.sliderValueOutputData,
   });
   final GestureTapCallback onStop;
   final Stream playStatusOutputData;
   final Stream<String> durationNowOutputData;
+  final Stream<double> sliderValueOutputData;
   final ValueChanged<double> onChanged;
-  final double value;
+
   final String audioTime;
 
   @override
@@ -82,14 +82,19 @@ class CustomButtonControllerPlayMusic extends StatelessWidget {
         SizedBox(height: HeightValuesMangers.h28),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 22),
-          child: SliderTheme(
-            data: SliderThemeData(overlayShape: SliderComponentShape.noOverlay),
-            child: Slider(
-              value: value,
-              onChanged: onChanged,
-              activeColor: ColorMangers.kLightWhite,
-              inactiveColor: Color(0xff2F5D9A),
-            ),
+          child: StreamBuilder<double>(
+            stream: sliderValueOutputData,
+            builder: (context, snapshot) {
+              return SliderTheme(
+                data: SliderThemeData(overlayShape: SliderComponentShape.noOverlay),
+                child: Slider(
+                  value:snapshot.data==null? 0:  snapshot.data!.toDouble(),
+                  onChanged: onChanged,
+                  activeColor: ColorMangers.kLightWhite,
+                  inactiveColor: Color(0xff2F5D9A),
+                ),
+              );
+            }
           ),
         ),
         Padding(
