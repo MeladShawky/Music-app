@@ -42,8 +42,8 @@ class PlayMusicController {
 
     sliderValueStreamController = StreamController();
     sliderValueNowInputData = sliderValueStreamController.sink;
-    sliderValueNowOutputData = sliderValueStreamController.stream.map((event)=>transferDurationToValueSlider(event));
-    sliderValueNowOutputData = sliderValueStreamController.stream.map((event)=>transferDurationToValueSlider(event));
+    sliderValueNowOutputData = sliderValueStreamController.stream.asBroadcastStream().map((event)=>transferDurationToValueSlider(event));
+    sliderValueNowOutputData = sliderValueStreamController.stream.asBroadcastStream().map((event)=>transferDurationToValueSlider(event));
   }
   static PlayMusicController? instance;
 
@@ -71,6 +71,15 @@ class PlayMusicController {
   void onChangedThumbSlider(double value){
   Duration duration=transferValueSliderToDuration(value);
   audioPlayer.seek(duration);
+  }
+
+  void onNextTap(){
+    if (index<ConstantsValue.listSongs.length-1) {
+      index++;
+    }  else {
+      index=0;
+    }
+    play();
   }
 
   Future<Duration?> play() async {

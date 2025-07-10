@@ -15,14 +15,18 @@ class CustomButtonControllerPlayMusic extends StatelessWidget {
     required this.onChanged,
     required this.onStop,
     required this.playStatusOutputData,
-    required this.audioTime, required this.durationNowOutputData, required this.sliderValueOutputData,
+    required this.audioTime,
+    required this.durationNowOutputData,
+    required this.sliderValueOutputData,
+    required this.onTapNext, required this.onTapback,
   });
   final GestureTapCallback onStop;
   final Stream playStatusOutputData;
   final Stream<String> durationNowOutputData;
   final Stream<double> sliderValueOutputData;
   final ValueChanged<double> onChanged;
-
+  final GestureTapCallback onTapNext;
+  final GestureTapCallback onTapback;
   final String audioTime;
 
   @override
@@ -44,7 +48,7 @@ class CustomButtonControllerPlayMusic extends StatelessWidget {
                   colors: [ColorMangers.kLightWhite2, ColorMangers.kLightWhite],
                 ),
               ),
-              child: Image(image: AssetImage(AssetsManger.vector2)),
+              child: InkWell(onTap: onTapback,child: Image(image: AssetImage(AssetsManger.vector2))),
             ),
             InkWell(
               onTap: onStop,
@@ -74,7 +78,10 @@ class CustomButtonControllerPlayMusic extends StatelessWidget {
                   colors: [ColorMangers.kLightWhite2, ColorMangers.kLightWhite],
                 ),
               ),
-              child: Image(image: AssetImage(AssetsManger.vector4)),
+              child: InkWell(
+                onTap: onTapNext,
+                child: Image(image: AssetImage(AssetsManger.vector4)),
+              ),
             ),
             Image(image: AssetImage(AssetsManger.vector5)),
           ],
@@ -86,15 +93,17 @@ class CustomButtonControllerPlayMusic extends StatelessWidget {
             stream: sliderValueOutputData,
             builder: (context, snapshot) {
               return SliderTheme(
-                data: SliderThemeData(overlayShape: SliderComponentShape.noOverlay),
+                data: SliderThemeData(
+                  overlayShape: SliderComponentShape.noOverlay,
+                ),
                 child: Slider(
-                  value:snapshot.data==null? 0:  snapshot.data!.toDouble(),
+                  value: snapshot.data == null ? 0 : snapshot.data!.toDouble(),
                   onChanged: onChanged,
                   activeColor: ColorMangers.kLightWhite,
                   inactiveColor: Color(0xff2F5D9A),
                 ),
               );
-            }
+            },
           ),
         ),
         Padding(
@@ -113,16 +122,16 @@ class CustomButtonControllerPlayMusic extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                     ),
                   );
-                }
+                },
               ),
               Text(
-              audioTime,
+                audioTime,
                 style: TextStyle(
                   color: ColorMangers.kLightWhite,
                   fontSize: FontSizeManger.f12,
                   fontWeight: FontWeight.w500,
                 ),
-              )
+              ),
             ],
           ),
         ),

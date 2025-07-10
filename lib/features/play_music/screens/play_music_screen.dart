@@ -99,13 +99,17 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
                         durationNowOutputData:
                             _PlayMusicController.durationNowOutputData,
                         sliderValueOutputData:
-                            _PlayMusicController.sliderValueNowOutputData,
+                            _PlayMusicController.sliderValueNowOutputData, 
+                        onTapNext: () {
+                          _PlayMusicController.onNextTap();
+                      }, 
+                        onTapback: () {  },
                       ),
                       CustomToolsPlayMusic(),
                       CustomTools2PlayMusic(),
                       SizedBox(height: HeightValuesMangers.h11),
                     ],
-                  ),
+                  ), 
                 ),
               ),
             );
