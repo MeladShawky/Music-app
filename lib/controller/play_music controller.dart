@@ -22,13 +22,16 @@ class PlayMusicController {
   late Sink<Duration> sliderValueNowInputData;
   late Stream<double> sliderValueNowOutputData;
 
+  late StreamController<int> detailsStreamController;
+  late Sink<int> detailsInputData;
+  late Stream<int> detailsOutputData;
+
 
   PlayMusicController._internal(this.index) {
     audioPlayer = AudioPlayer();
     audioCache = AudioCache(prefix: "");
     playStatusStreamController = StreamController();
     playStatusInputData = playStatusStreamController.sink;
-    playStatusOutputData = playStatusStreamController.stream;
     playStatusOutputData = playStatusStreamController.stream
         .asBroadcastStream();
     durationNowStreamController = StreamController();
@@ -44,6 +47,11 @@ class PlayMusicController {
     sliderValueNowInputData = sliderValueStreamController.sink;
     sliderValueNowOutputData = sliderValueStreamController.stream.asBroadcastStream().map((event)=>transferDurationToValueSlider(event));
     sliderValueNowOutputData = sliderValueStreamController.stream.asBroadcastStream().map((event)=>transferDurationToValueSlider(event));
+
+    detailsStreamController = StreamController();
+    detailsInputData = detailsStreamController.sink;
+    detailsOutputData = detailsStreamController.stream
+        .asBroadcastStream();
   }
   static PlayMusicController? instance;
 
@@ -86,6 +94,7 @@ class PlayMusicController {
     uri = await audioCache.load(ConstantsValue.listSongs[index].pathSong);
     await audioPlayer.play(UrlSource(uri.toString()));
     audioTime = await audioPlayer.getDuration();
+    detailsInputData.add(index);
     audioPlayer.onPositionChanged.listen((event) {
       durationNowInputData.add(event);
       sliderValueNowInputData.add(event);
