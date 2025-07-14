@@ -110,7 +110,10 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
                       }, 
                         onTapback: () {
                           _PlayMusicController.onBackTap();
-                        },
+                        }, onTapLoop: () {
+                        _PlayMusicController.onTapLoop();
+                      },
+                        loopStatusOutputData: _PlayMusicController.loopStatusOutputData,
                       ),
                       CustomToolsPlayMusic(),
                       CustomTools2PlayMusic(),

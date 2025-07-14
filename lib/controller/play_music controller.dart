@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:audioplayers/audioplayers.dart';
 import 'package:music_app/core/resources/constants_value.dart';
@@ -9,6 +10,7 @@ class PlayMusicController {
   late AudioCache audioCache;
   late Uri uri;
   late bool isPlaying = true;
+  late bool loopStatus = false;
   late double valueSlider=0;
   late StreamController<bool> playStatusStreamController;
   late Sink<bool> playStatusInputData;
@@ -26,6 +28,10 @@ class PlayMusicController {
   late Sink<int> detailsInputData;
   late Stream<int> detailsOutputData;
 
+  late StreamController<bool> loopStatusStreamController;
+  late Sink<bool> loopStatusInputData;
+  late Stream<bool> loopStatusOutputData;
+
 
   PlayMusicController._internal(this.index) {
     audioPlayer = AudioPlayer();
@@ -33,6 +39,10 @@ class PlayMusicController {
     playStatusStreamController = StreamController();
     playStatusInputData = playStatusStreamController.sink;
     playStatusOutputData = playStatusStreamController.stream
+        .asBroadcastStream();
+    loopStatusStreamController = StreamController();
+    loopStatusInputData = loopStatusStreamController.sink;
+    loopStatusOutputData = loopStatusStreamController.stream
         .asBroadcastStream();
     durationNowStreamController = StreamController();
     durationNowInputData = durationNowStreamController.sink;
@@ -97,6 +107,17 @@ class PlayMusicController {
       index--;
     }
     play();
+  }
+
+  void onTapLoop(){
+    if (audioPlayer.releaseMode==ReleaseMode.loop) {
+      audioPlayer.setReleaseMode(ReleaseMode.release);
+      loopStatus=false;
+    } else {
+      audioPlayer.setReleaseMode(ReleaseMode.loop);
+      loopStatus=true;
+    }
+    loopStatusInputData.add(loopStatus);
   }
 
   Future<Duration?> play() async {
