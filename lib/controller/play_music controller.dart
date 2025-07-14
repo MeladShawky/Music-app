@@ -77,7 +77,8 @@ class PlayMusicController {
     double durationNowOnSecond=duration.inSeconds.toDouble();
     double maxTime=audioTime!.inSeconds.toDouble();
    valueSlider=(durationNowOnSecond/maxTime)*1.0;
-   return valueSlider;
+   return valueSlider.toInt() as double;
+
   }
 
   Duration transferValueSliderToDuration(double sliderValue)
@@ -129,8 +130,11 @@ class PlayMusicController {
       durationNowInputData.add(event);
       sliderValueNowInputData.add(event);
     });
-    isPlaying = true;
+    audioPlayer.onPlayerComplete.listen((event){
+      onNextTap();
+    });
     playStatusInputData.add(isPlaying);
+    isPlaying = true;
     return audioTime;
   }
 
