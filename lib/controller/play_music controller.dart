@@ -90,6 +90,15 @@ class PlayMusicController {
     play();
   }
 
+  void onBackTap(){
+    if (index==0) {
+      index=ConstantsValue.listSongs.length-1;
+    }  else {
+      index--;
+    }
+    play();
+  }
+
   Future<Duration?> play() async {
     uri = await audioCache.load(ConstantsValue.listSongs[index].pathSong);
     await audioPlayer.play(UrlSource(uri.toString()));

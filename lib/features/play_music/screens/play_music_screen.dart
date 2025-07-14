@@ -108,7 +108,9 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
                         onTapNext: () {
                           _PlayMusicController.onNextTap();
                       }, 
-                        onTapback: () {  },
+                        onTapback: () {
+                          _PlayMusicController.onBackTap();
+                        },
                       ),
                       CustomToolsPlayMusic(),
                       CustomTools2PlayMusic(),
