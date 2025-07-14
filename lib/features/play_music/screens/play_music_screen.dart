@@ -114,6 +114,9 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
                         _PlayMusicController.onTapLoop();
                       },
                         loopStatusOutputData: _PlayMusicController.loopStatusOutputData,
+                        onTapRandom: () {
+                          _PlayMusicController.onTapRandom();
+                        },
                       ),
                       CustomToolsPlayMusic(),
                       CustomTools2PlayMusic(),

@@ -77,7 +77,8 @@ class PlayMusicController {
     double durationNowOnSecond=duration.inSeconds.toDouble();
     double maxTime=audioTime!.inSeconds.toDouble();
    valueSlider=(durationNowOnSecond/maxTime)*1.0;
-   return valueSlider.toInt() as double;
+   valueSlider = valueSlider>1?1:valueSlider;
+   return valueSlider;
 
   }
 
@@ -167,5 +168,11 @@ class PlayMusicController {
         .padLeft(2, '0');
     String second = duration.inSeconds.remainder(60).toString().padLeft(2, '0');
     return '$minute:$second';
+  }
+  void onTapRandom(){
+    int i=Random().nextInt(ConstantsValue.listSongs.length);
+    if (i==index)  i=Random().nextInt(ConstantsValue.listSongs.length);
+    index=i;
+    play();
   }
 }
