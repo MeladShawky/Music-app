@@ -23,8 +23,14 @@ class _HomePageState extends State<HomePage> {
   late HomePageController homePageController;
   @override
   void initState() {
-    super.initState();
     homePageController = HomePageController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    homePageController.dispose();
+    super.dispose();
   }
 
   @override
@@ -45,20 +51,23 @@ class _HomePageState extends State<HomePage> {
             CustomTextFieldHomePage(
               onTap: () {
                 homePageController.onTapSearchTextField();
-              }, onTapOutside: (PointerDownEvent event) {
+              },
+              onTapClosedIcon: () {
                 homePageController.onTapOutsideSearchTextField();
-            },
+              },
+              isSearchNow: homePageController.tappedOnSearchTextField,
+              StreamCloseStatus: homePageController.closeStatusSearchOutputData,
             ),
-              StreamBuilder(
-                stream: homePageController.tappedStatusSearchOutputData,
-                builder: (context, snapshot) {
-                   if (snapshot.data==null||snapshot.data==false) {
-                     return SizedBox();
-                   } else {
-                     return CustomSearchFeature();
-                   }
+            StreamBuilder(
+              stream: homePageController.tappedStatusSearchOutputData,
+              builder: (context, snapshot) {
+                if (snapshot.data == null || snapshot.data == false) {
+                  return SizedBox();
+                } else {
+                  return CustomSearchFeature();
                 }
-              ),
+              },
+            ),
 
             CustomTitleHomePage(title: StringValues.recommandedMusic),
             CustomRecommandedMusicHomePage(

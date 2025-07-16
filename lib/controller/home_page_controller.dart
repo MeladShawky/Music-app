@@ -10,10 +10,19 @@ class HomePageController{
   late Sink<bool> tappedStatusSearchInputData;
   late Stream<bool> tappedStatusSearchOutputData;
 
+  late StreamController<bool> closeStatusStreamController;
+  late Sink<bool> closeStatusSearchInputData;
+  late Stream<bool> closeStatusSearchOutputData;
+
   HomePageController(){
     tappedStatusSearchStreamController=StreamController();
     tappedStatusSearchInputData=tappedStatusSearchStreamController.sink;
     tappedStatusSearchOutputData=tappedStatusSearchStreamController.stream;
+    tappedStatusSearchInputData.add(tappedOnSearchTextField);
+
+    closeStatusStreamController=StreamController();
+    closeStatusSearchInputData=closeStatusStreamController.sink;
+    closeStatusSearchOutputData=closeStatusStreamController.stream;
     tappedStatusSearchInputData.add(tappedOnSearchTextField);
 
   }
@@ -32,9 +41,11 @@ class HomePageController{
   void onTapSearchTextField(){
     tappedOnSearchTextField = true;
     tappedStatusSearchInputData.add(tappedOnSearchTextField);
+    closeStatusSearchInputData.add(tappedOnSearchTextField);
   }
   void onTapOutsideSearchTextField(){
     tappedOnSearchTextField = false;
+    closeStatusSearchInputData.add(tappedOnSearchTextField);
     tappedStatusSearchInputData.add(tappedOnSearchTextField);
     FocusManager.instance.primaryFocus?.unfocus();
   }
