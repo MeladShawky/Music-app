@@ -8,24 +8,29 @@ import 'package:music_app/features/home/widgets/custom_title_home_page.dart';
 import 'package:music_app/models/songsModel.dart';
 
 class CustomSearchFeature extends StatelessWidget {
-  const CustomSearchFeature({super.key, required this.listSearch});
-final List<SongsModel> listSearch;
+  const CustomSearchFeature({super.key, required this.listSearchOutputData, });
+  final Stream<List<SongsModel>> listSearchOutputData;
   @override
   Widget build(BuildContext context) {
     return  Column(
       children: [
         CustomTitleHomePage(title: StringValues.searchSong),
         SizedBox(height: 22),
-        listSearch.length==0?Text('Not Found',style: TextStyle(color: ColorMangers.kWhite),):
-        CustomSearchDetails(
-          songsModel: listSearch,
-          itemCount: listSearch.length,
-          onTap: (index) {
-            HomePageController.navigtorToPlayMusicScreen(
-              context: context,
-              index: index,
+        StreamBuilder(
+          stream: listSearchOutputData,
+          builder: (context, snapshot) {
+            return snapshot.data==null||snapshot.data!.length==0?Text('Not Found',style: TextStyle(color: ColorMangers.kWhite),):
+            CustomSearchDetails(
+              songsModel: snapshot.data!,
+              itemCount: snapshot.data!.length,
+              onTap: (index) {
+                HomePageController.navigtorToPlayMusicScreen(
+                  context: context,
+                  index: index,
+                );
+              },
             );
-          },
+          }
         ),
       ],
     );
