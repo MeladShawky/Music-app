@@ -67,7 +67,7 @@ class _HomePageState extends State<HomePage> {
                 if (snapshot.data == null || snapshot.data == false) {
                   return SizedBox();
                 } else {
-                  return CustomSearchFeature();
+                  return CustomSearchFeature(listSearch:homePageController.listSearchModel,);
                 }
               },
             ),

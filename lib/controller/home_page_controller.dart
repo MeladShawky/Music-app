@@ -16,6 +16,8 @@ class HomePageController{
   late Sink<bool> closeStatusSearchInputData;
   late Stream<bool> closeStatusSearchOutputData;
 
+  List<SongsModel> listSearchModel=[];
+
   HomePageController(){
     tappedStatusSearchStreamController=StreamController();
     tappedStatusSearchInputData=tappedStatusSearchStreamController.sink;
@@ -53,8 +55,11 @@ class HomePageController{
   }
   void searchAboutSong(String value){
     List<SongsModel> a =ConstantsValue.listSongs.where((element)=> element.song.toLowerCase().contains(value)).toList();
+    listSearchModel.clear();
+    listSearchModel=a;
     for(SongsModel s in a) {
       print(s.song);
     }
+
   }
 }
