@@ -33,7 +33,6 @@ class _PlayMusicScreenState extends State<PlayMusicScreen> {
     super.didChangeDependencies();
     index = ModalRoute.of(context)!.settings.arguments as int;
 
-    _PlayMusicController = PlayMusicController(index);
     // _PlayMusicController.play();
   }
 

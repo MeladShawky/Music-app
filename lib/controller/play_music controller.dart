@@ -158,7 +158,26 @@ class PlayMusicController {
   void disposeAudio() {
     playStatusInputData.close();
     playStatusStreamController.close();
-    // audioPlayer.dispose();
+     playStatusInputData.close();
+
+
+     durationNowStreamController.close();
+     durationNowInputData.close();
+
+
+     sliderValueStreamController.close();
+     sliderValueNowInputData.close();
+
+
+     detailsStreamController.close();
+     detailsInputData.close();
+
+
+     loopStatusStreamController;
+     loopStatusInputData;
+     loopStatusOutputData;
+     audioPlayer.dispose();
+     audioCache.clearAll();
   }
 
   String trasferDurationToMinuetAndSecond(Duration? duration) {
