@@ -8,6 +8,7 @@ import 'package:music_app/core/resources/string_values.dart';
 import 'package:music_app/features/home/widgets/custom_recommanded_music_home_page.dart';
 
 import 'package:music_app/features/home/widgets/custom_search_details.dart';
+import 'package:music_app/features/home/widgets/custom_search_feature.dart';
 import 'package:music_app/features/home/widgets/custom_text_field_home_page.dart';
 import 'package:music_app/features/home/widgets/custom_title_home_page.dart';
 
@@ -43,25 +44,18 @@ class _HomePageState extends State<HomePage> {
           children: [
             CustomTextFieldHomePage(
               onTap: () {
-                homePageController.tappedOnSearchTextField = true;
+                homePageController.onTapSearchTextField();
               },
             ),
-            if (homePageController.tappedOnSearchTextField == true)
-              Column(
-                children: [
-                  CustomTitleHomePage(title: StringValues.searchSong),
-                  SizedBox(height: 22),
-                  CustomSearchDetails(
-                    songsModel: ConstantsValue.listSongs,
-                    itemCount: 3,
-                    onTap: (index) {
-                      HomePageController.navigtorToPlayMusicScreen(
-                        context: context,
-                        index: index,
-                      );
-                    },
-                  ),
-                ],
+              StreamBuilder(
+                stream: homePageController.tappedStatusSearchOutputData,
+                builder: (context, snapshot) {
+                   if (snapshot.data==null||snapshot.data==false) {
+                     return SizedBox();
+                   } else {
+                     return CustomSearchFeature();
+                   }
+                }
               ),
 
             CustomTitleHomePage(title: StringValues.recommandedMusic),
