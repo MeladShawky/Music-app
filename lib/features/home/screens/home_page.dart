@@ -45,7 +45,9 @@ class _HomePageState extends State<HomePage> {
             CustomTextFieldHomePage(
               onTap: () {
                 homePageController.onTapSearchTextField();
-              },
+              }, onTapOutside: (PointerDownEvent event) {
+                homePageController.onTapOutsideSearchTextField();
+            },
             ),
               StreamBuilder(
                 stream: homePageController.tappedStatusSearchOutputData,

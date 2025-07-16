@@ -33,4 +33,9 @@ class HomePageController{
     tappedOnSearchTextField = true;
     tappedStatusSearchInputData.add(tappedOnSearchTextField);
   }
+  void onTapOutsideSearchTextField(){
+    tappedOnSearchTextField = false;
+    tappedStatusSearchInputData.add(tappedOnSearchTextField);
+    FocusManager.instance.primaryFocus?.unfocus();
+  }
 }
