@@ -3,11 +3,12 @@ import 'package:music_app/core/resources/color_mangers.dart';
 import 'package:music_app/core/resources/string_values.dart';
 
 class CustomTextFieldHomePage extends StatelessWidget {
-  const CustomTextFieldHomePage({super.key, required this.onTap,  this.isSearchNow=false, required this.onTapClosedIcon,required this.StreamCloseStatus });
+  const CustomTextFieldHomePage({super.key, required this.onTap,  this.isSearchNow=false, required this.onTapClosedIcon,required this.StreamCloseStatus, required this.onSubmitted });
   final GestureTapCallback onTap;
   final GestureTapCallback onTapClosedIcon;
   final bool isSearchNow;
   final StreamCloseStatus;
+  final ValueChanged<String> onSubmitted;
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +18,7 @@ class CustomTextFieldHomePage extends StatelessWidget {
         stream: StreamCloseStatus,
         builder: (context, snapshot) {
           return TextField(
+            onSubmitted: onSubmitted,
             onTap: onTap,
             decoration: InputDecoration(
               suffixIcon:snapshot.data==true? InkWell(onTap: onTapClosedIcon ,child: Icon(Icons.clear)):null,

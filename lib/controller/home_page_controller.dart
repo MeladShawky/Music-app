@@ -1,7 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:music_app/core/resources/constants_value.dart';
 import 'package:music_app/core/resources/routes_managers.dart';
+import 'package:music_app/models/songsModel.dart';
 
 class HomePageController{
   bool tappedOnSearchTextField=false;
@@ -48,5 +50,11 @@ class HomePageController{
     closeStatusSearchInputData.add(tappedOnSearchTextField);
     tappedStatusSearchInputData.add(tappedOnSearchTextField);
     FocusManager.instance.primaryFocus?.unfocus();
+  }
+  void searchAboutSong(String value){
+    List<SongsModel> a =ConstantsValue.listSongs.where((element)=> element.song.toLowerCase().contains(value)).toList();
+    for(SongsModel s in a) {
+      print(s.song);
+    }
   }
 }

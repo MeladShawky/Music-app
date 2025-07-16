@@ -57,6 +57,9 @@ class _HomePageState extends State<HomePage> {
               },
               isSearchNow: homePageController.tappedOnSearchTextField,
               StreamCloseStatus: homePageController.closeStatusSearchOutputData,
+              onSubmitted: (String value) {
+                homePageController.searchAboutSong(value);
+              },
             ),
             StreamBuilder(
               stream: homePageController.tappedStatusSearchOutputData,
