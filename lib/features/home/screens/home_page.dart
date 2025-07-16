@@ -11,9 +11,20 @@ import 'package:music_app/features/home/widgets/custom_search_details.dart';
 import 'package:music_app/features/home/widgets/custom_text_field_home_page.dart';
 import 'package:music_app/features/home/widgets/custom_title_home_page.dart';
 
-
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  late HomePageController homePageController;
+  @override
+  void initState() {
+    super.initState();
+    homePageController = HomePageController();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,22 +41,38 @@ class HomePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomTextFieldHomePage(),
-            CustomTitleHomePage(title: StringValues.searchSong),
-            SizedBox(height: 22),
-            CustomSearchDetails(
-              songsModel: ConstantsValue.listSongs,
-              itemCount: 3,
-              onTap: (index) {
-                HomePageController.navigtorToPlayMusicScreen(context: context, index: index );
+            CustomTextFieldHomePage(
+              onTap: () {
+                homePageController.tappedOnSearchTextField = true;
               },
             ),
+            if (homePageController.tappedOnSearchTextField == true)
+              Column(
+                children: [
+                  CustomTitleHomePage(title: StringValues.searchSong),
+                  SizedBox(height: 22),
+                  CustomSearchDetails(
+                    songsModel: ConstantsValue.listSongs,
+                    itemCount: 3,
+                    onTap: (index) {
+                      HomePageController.navigtorToPlayMusicScreen(
+                        context: context,
+                        index: index,
+                      );
+                    },
+                  ),
+                ],
+              ),
+
             CustomTitleHomePage(title: StringValues.recommandedMusic),
-            //SizedBox(height: HeightValuesMangers.h22),
             CustomRecommandedMusicHomePage(
               onTap: (index) {
-                HomePageController.navigtorToPlayMusicScreen(context: context,index: index);
-              }, songsModel:ConstantsValue.listSongs,
+                HomePageController.navigtorToPlayMusicScreen(
+                  context: context,
+                  index: index,
+                );
+              },
+              songsModel: ConstantsValue.listSongs,
             ),
           ],
         ),
